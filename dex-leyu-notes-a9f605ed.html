@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指向 · leyu 使用简引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9f6f0;
+            font-family: 'Georgia', 'Times New Roman', '宋体', 'SimSun', serif;
+            color: #2e2b27;
+            line-height: 1.8;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 760px;
+            width: 100%;
+            background: #fffcf8;
+            padding: 2.8rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .page {
+                padding: 2rem 1.4rem;
+                border-radius: 14px;
+            }
+        }
+
+        .opening {
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: #3d352e;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #c9b99a;
+            padding-left: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .opening small {
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 0.4rem;
+            color: #7f7166;
+            font-weight: 300;
+        }
+
+        p {
+            margin: 1.1rem 0;
+            text-align: left;
+            font-size: 1.075rem;
+        }
+
+        .pull-quote {
+            background: #f3ede4;
+            border-left: 6px solid #b7a68b;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #3f3830;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .pull-quote strong {
+            font-style: normal;
+            font-weight: 500;
+            color: #5b4f41;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1.6rem 0;
+            padding: 0;
+        }
+
+        .feature-list li {
+            background: #f9f4eb;
+            margin-bottom: 0.7rem;
+            padding: 0.9rem 1.2rem 0.9rem 2rem;
+            border-radius: 28px;
+            position: relative;
+            font-size: 1.05rem;
+            transition: background 0.2s;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.8rem;
+            top: 0.85rem;
+            font-size: 1.8rem;
+            color: #9b8b77;
+            line-height: 1;
+        }
+
+        .feature-list li:hover {
+            background: #efe8dc;
+        }
+
+        .info-box {
+            background: #e9e2d6;
+            border-radius: 24px;
+            padding: 1.3rem 1.8rem;
+            margin: 2rem 0;
+            border: 1px solid #d9cebe;
+            font-size: 0.98rem;
+            color: #2f2a23;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .info-box strong {
+            color: #4e4136;
+        }
+
+        .link-sentence {
+            background: #f5efe7;
+            padding: 0.3rem 0.8rem 0.3rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.1rem 0;
+        }
+
+        .ending {
+            margin-top: 2.6rem;
+            padding-top: 1.6rem;
+            border-top: 1px dashed #d6cbbd;
+            font-size: 1rem;
+            color: #5b5247;
+            text-align: left;
+        }
+
+        a {
+            color: #6f5b45;
+            text-decoration: none;
+            border-bottom: 1px solid #cdbbaa;
+            transition: border 0.2s, color 0.2s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #2b231d;
+            border-bottom-color: #7f6a56;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e3d9cd;
+            margin: 1.8rem 0;
+        }
+
+        .footnote {
+            font-size: 0.9rem;
+            color: #7d7266;
+            margin-top: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <div class="opening">
+            从这里开始，保持简单。
+            <small>一份温和的使用前翻阅</small>
+        </div>
+
+        <p>
+            你正在寻找一个能从日常中抽离片刻、又不必费力重新学习逻辑的地方。  
+            在数不清的选项之间，有时我们需要的不多：一个干净的路口，一条清晰的指引。  
+            <a href="https://dex-leyu.com.cn">leyu</a> 正是你手边那个位置——不喧哗，不绕路，打开之后你就明白它想帮你省下什么。
+        </p>
+
+        <div class="pull-quote">
+            “最好的工具，用完后几乎感觉不到它的存在。”  
+            <strong>—— 这也是我们整理这份简述的初衷。</strong>
+        </div>
+
+        <p>
+            初次接触时，你可能想先确认几件事。下面这些细节来自实际使用中的体会，谈不上大全，但足够让你走得稳当：
+        </p>
+
+        <ul class="feature-list">
+            <li><strong>入口明确</strong> —— 整个页面结构围绕一件事组织，没有层层折叠的迷宫，每一个区块都有其实际功能。</li>
+            <li><strong>响应直觉</strong> —— 无论你使用手机还是桌面浏览器，布局都会贴合屏幕，不会出现按钮挤成一团或文字溢出的情况。</li>
+            <li><strong>信息克制</strong> —— 没有弹窗轮播、自动播放的视频或闪烁的推广条。你在 <a href="https://dex-leyu.com.cn" style="border-bottom: 0; font-weight: 400;">leyu</a> 上看到的每段文字、每个链接都有它存在的理由。</li>
+            <li><strong>配色温和</strong> —— 背景与文字对比自然，长时间阅读也不容易疲劳。这也是为什么这次页面也沿用了类似的低刺激基调。</li>
+            <li><strong>加载轻量</strong> —— 不需要等待复杂的脚本渲染，页面的核心内容在极短时间内即可呈现。</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>💡 访问提醒</strong><br>
+            如果你使用公共网络或公司防火墙，建议先确认域名 <span style="font-family: monospace;">dex-leyu.com.cn</span> 是否在允许访问列表内。  
+            部分严格过滤的环境可能会限制访问，此时可以尝试切换至个人热点或更换 DNS。  
+            另外，为了获得最完整的排版效果，推荐使用最新版本的主流浏览器（Chrome / Edge / Safari）。
+        </div>
+
+        <p>
+            很多人在第一次打开时都会问：“就这些？” 是的，就这些。但恰恰是这种“恰好的安静”，让重复的浏览变得不那么消耗人。  
+            你不需要记住复杂的操作路径，也不用担心错过什么隐藏功能——因为所有该出现的，都已经被放在了你第一眼就能看到的地方。  
+            如果你已经准备好了，直接通过 <a href="https://dex-leyu.com.cn">leyu</a> 开始就行。没有注册门槛，没有强制教程。
+        </p>
+
+        <hr>
+
+        <p style="font-size: 0.95rem; color: #5f554b;">
+            <span style="background: #ece4da; padding: 0.2rem 0.6rem; border-radius: 12px;">常见疑问摘要</span><br><br>
+            <strong>Q：</strong> 这个页面与主站是什么关系？<br>
+            <span style="padding-left: 0.5rem;">→ 这是一个独立的介绍页，帮助你快速了解 <a href="https://dex-leyu.com.cn">leyu</a> 的使用风格和注意事项，不替代主站功能。</span><br><br>
+            <strong>Q：</strong> 移动端访问体验如何？<br>
+            <span style="padding-left: 0.5rem;">→ 主站采用响应式设计，横竖屏均可正常浏览。本页同样适配小屏幕。</span><br><br>
+            <strong>Q：</strong> 是否会收集个人信息？<br>
+            <span style="padding-left: 0.5rem;">→ 该站点不主动收集访客数据，所有交互均在你与页面内容之间完成。</span>
+        </p>
+
+        <div class="ending">
+            <p style="margin: 0;">
+                最后补一句：无论你是初次路过，还是回来确认某个细节，希望这个页面没有浪费你的时间。  
+                好的工具不需要用力过猛的开场白，它只需要在你需要的时候，恰好在那里。
+            </p>
+            <div style="margin-top: 1.2rem; font-size: 0.9rem; color: #8c7f71;">
+                —— 仅以此页记录一次安静的指向。
+            </div>
+        </div>
+
+        <div class="footnote">
+            <a href="https://dex-leyu.com.cn" style="border-bottom: none; color: #7f6a56;">leyu</a> · 持续可用，无需额外配置。
+        </div>
+
+    </div>
+</body>
+</html>
