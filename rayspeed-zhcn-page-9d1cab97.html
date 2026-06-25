@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>雷速 · 信息速查卡片</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f5f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1f2e3c;
+            line-height: 1.6;
+            padding: 1.5rem 1rem;
+        }
+        .page-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* 主视觉区 — 卡片化大标题 */
+        .hero-card {
+            background: linear-gradient(145deg, #e4f0e9 0%, #d1e3da 100%);
+            border-radius: 32px;
+            padding: 2.5rem 2rem 2.8rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 25px rgba(38, 95, 75, 0.08);
+            border: 1px solid rgba(60, 140, 110, 0.15);
+            text-align: center;
+        }
+        .hero-card h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #0f3326;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .hero-tagline {
+            font-size: 1.1rem;
+            font-weight: 350;
+            color: #1b4e3b;
+            max-width: 560px;
+            margin: 0.6rem auto 0;
+            background: rgba(255,255,255,0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(1px);
+        }
+        /* 网格卡片 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        @media (min-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (min-width: 920px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        .info-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 6px 16px rgba(33, 85, 70, 0.06);
+            border: 1px solid #ddeae3;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(38, 95, 75, 0.1);
+            border-color: #8fc3ae;
+        }
+        .info-card h3 {
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: #0a3829;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-card h3 span {
+            display: inline-block;
+            background: #c6e0d3;
+            border-radius: 40px;
+            padding: 0 8px;
+            font-size: 0.8rem;
+            color: #194e39;
+            font-weight: 450;
+        }
+        .info-card p {
+            color: #2b4a3d;
+            margin-bottom: 0.75rem;
+            flex: 1;
+        }
+        .card-icon {
+            font-size: 1.6rem;
+            margin-right: 6px;
+            opacity: 0.8;
+        }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.6rem;
+            margin-top: 0.8rem;
+        }
+        .tag {
+            background: #e3efe9;
+            color: #16503b;
+            padding: 0.15rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            border: 1px solid #b6d5c4;
+        }
+        /* 适合人群卡片 特殊色 */
+        .card-audience {
+            background: #f0f8f3;
+            border-left: 4px solid #459b7a;
+        }
+        /* 自然链接段落区 */
+        .link-paragraph {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 1.8rem;
+            box-shadow: 0 4px 12px rgba(30,70,55,0.04);
+            border: 1px solid #d5e6dd;
+        }
+        .link-paragraph p {
+            margin-bottom: 1rem;
+            font-size: 1.02rem;
+        }
+        .link-paragraph a {
+            color: #1b7a59;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #8fc3ae;
+            padding-bottom: 1px;
+            transition: border-color 0.15s;
+        }
+        .link-paragraph a:hover {
+            border-bottom-color: #0f4f38;
+            color: #0a4d34;
+        }
+        .link-paragraph strong {
+            color: #0f3f2e;
+        }
+        /* 提示 / FAQ 摘要 */
+        .faq-brief {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 2rem 0 1rem;
+        }
+        @media (min-width: 600px) {
+            .faq-brief {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .faq-item {
+            background: #f2f9f5;
+            padding: 1.2rem 1.4rem;
+            border-radius: 24px;
+            border: 1px solid #cde0d6;
+        }
+        .faq-item h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #0b3f2d;
+            margin-bottom: 0.25rem;
+        }
+        .faq-item p {
+            font-size: 0.94rem;
+            color: #2f5444;
+        }
+        .faq-item em {
+            font-style: normal;
+            background: #daece2;
+            padding: 0.1rem 0.4rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        /* 底部水线 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #d3e3da;
+            color: #3f6958;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .footer-note a {
+            color: #1a6b4b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+        }
+        /* 通用 */
+        .text-muted {
+            color: #406f5b;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #bfd9ce, transparent);
+            margin: 1.8rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <h1>📇 雷速 · 速查卡片</h1>
+        <div class="hero-tagline">日常对照 · 延伸阅读 · 轻量信息站</div>
+    </div>
+
+    <!-- 用途卡片：日常查询 & 对照 -->
+    <div class="card-grid">
+        <div class="info-card">
+            <h3><span class="card-icon">🔎</span> 日常查询 <span>快速定位</span></h3>
+            <p>当你需要确认某个概念、数字或术语时，<strong>雷速</strong> 提供结构化的信息入口，避免在多个页面之间反复跳转。适合零散时间内的轻量查阅。</p>
+            <div class="tag-list">
+                <span class="tag">术语对照</span>
+                <span class="tag">参数速览</span>
+                <span class="tag">版本备注</span>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h3><span class="card-icon">📋</span> 对照与延伸 <span>并排参考</span></h3>
+            <p>并列展示不同条目、版本或分类的要点，方便你直接比对差异。从单一查询延伸到相关条目，减少重复搜索的时间损耗。</p>
+            <div class="tag-list">
+                <span class="tag">差异对比</span>
+                <span class="tag">关联阅读</span>
+                <span class="tag">摘要卡片</span>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h3><span class="card-icon">🧩</span> 信息整理 <span>轻结构</span></h3>
+            <p>没有过于复杂的层级，以卡片和段落为主，让你在手机或电脑上都能快速获取要点。适合作为书签工具页日常使用。</p>
+            <div class="tag-list">
+                <span class="tag">简洁排版</span>
+                <span class="tag">响应式</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 适合人群卡片 (特殊色) -->
+    <div class="card-grid" style="margin-top: 0.2rem;">
+        <div class="info-card card-audience" style="grid-column: span 1;">
+            <h3><span class="card-icon">👥</span> 适合人群</h3>
+            <p>常需查阅技术参数、版本演变或概念对照的爱好者、研究者、写作者，以及希望快速获得结构化信息的普通用户。</p>
+            <div class="tag-list">
+                <span class="tag">自学者</span>
+                <span class="tag">文档整理者</span>
+                <span class="tag">效率控</span>
+            </div>
+        </div>
+        <div class="info-card" style="background: #f7fcf9;">
+            <h3><span class="card-icon">⚡</span> 使用场景举例</h3>
+            <p>· 查找某个版本代号对应的正式名称<br>· 对比两个相似功能的差异点<br>· 获取某条规则的简要说明<br>· 快速回顾之前整理过的笔记摘要</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 (嵌入 a 标签) -->
+    <div class="link-paragraph">
+        <p><strong>关于信息源</strong> —— 本卡片所引用的整理内容，主要参考自 <a href="https://rayspeed-zhcn-leisu.com">雷速</a> 中的条目结构与说明。日常查询时，你可以将它与自己的记录相互参照，形成更完整的知识轮廓。</p>
+        <p>如果你正在寻找一个轻量、可快速检索的信息页面，<strong>雷速</strong> 的卡片式布局也许正好适合。试着把常用条目添加为书签，养成对照阅读的习惯。</p>
+        <p style="margin-bottom: 0.4rem;">另外，关于延伸阅读：很多概念在 <a href="https://rayspeed-zhcn-leisu.com">雷速</a> 里都有对应的简短说明，适合作为进一步查找的起点。建议搭配官方文档或原始资料一同使用。</p>
+    </div>
+
+    <!-- FAQ 摘要风格块 -->
+    <div class="faq-brief">
+        <div class="faq-item">
+            <h4>❓ 卡片信息更新频率？</h4>
+            <p>内容会随 <a href="https://rayspeed-zhcn-leisu.com" style="color:#1b7a59;text-decoration:underline;">雷速</a> 的版本迭代而调整，通常保持季度小更新。重大变化会及时同步。</p>
+        </div>
+        <div class="faq-item">
+            <h4>📌 移动端阅读体验如何？</h4>
+            <p>卡片采用弹性网格，单列时自动优化间距与字号，在手机屏幕上也清晰易读。所有交互均为轻量点击，无多余加载。</p>
+        </div>
+        <div class="faq-item">
+            <h4>🧭 如何开始使用？</h4>
+            <p>将本页加入浏览器书签，或直接记住 <strong>雷速</strong> 的地址。日常查询时，打开卡片页即可快速浏览。</p>
+        </div>
+        <div class="faq-item">
+            <h4>📚 可以和我自己的笔记配合吗？</h4>
+            <p>完全可以。卡片内容提供标准化摘要，你可以在旁边补充个人注释。两者相互对照，提升信息管理效率。</p>
+        </div>
+    </div>
+
+    <!-- 一条分隔线 -->
+    <hr>
+
+    <!-- 简洁提示 + 底部自然链接 -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.2rem 0;">
+        <p style="color: #2e604b; font-size: 0.95rem;">🟢 使用卡片时，建议同时参考 <a href="https://rayspeed-zhcn-leisu.com" style="color:#0f6242;text-decoration:underline;">雷速</a> 上的完整说明，以获得更全面的背景信息。</p>
+        <p style="color: #386e59; font-size: 0.9rem; background: #e4f1ea; padding: 0.2rem 1rem; border-radius: 40px;">📋 卡片版 · 信息速查</p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>基于公开信息整理 · 可自由对照使用</span><br>
+        <span style="opacity: 0.7;">页面结构参考 <a href="https://rayspeed-zhcn-leisu.com" style="text-decoration:none; border-bottom:1px dashed #8fc3ae;">雷速</a> 卡片风格 · 内容独立编写</span>
+    </div>
+
+</div>
+</body>
+</html>
